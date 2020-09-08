@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Rotten Potatos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="mask hide"></div>
+  <div class="modal hide" id="modalLogin">
+    <div class="modal-header">
+      <h2>:: Login</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-x close-button" id="closeModalLoginButton">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div>
+      <form action="" method="post">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required />
+        <input type="submit" value="Adicionar Comentario" />
+      </form>
+    </div>
+  </div>
+  <div class="modal hide" id="modalComments">
+    <div class="modal-header">
+      <h2>:: Comentários</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-x close-button" id="closeModalCommentsButton">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div>
+      <form action="" method="post">
+        <label for="userComment">Meu comentario</label>
+        <textarea id="userComment" name="userComment" placeholder="Escreva aqui sua opiniao sobre o filme!" rows="4"
+          required></textarea>
+        <input type="submit" value="Adicionar Comentario" />
+      </form>
+    </div>
+  </div>
+  <header>
+    <div class="navbar">
+      <h1>Rotten Potatos</h1>
+      <a class="sm-only ham-menu">
+        <span>menu &nbsp;</span>
+        <svg viewBox="0 0 100 80" width="30" height="30">
+          <rect width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="30" width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="60" width="100" height="20" rx="8" fill="white"></rect>
+        </svg>
+      </a>
+      <nav id="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><button class="custom-button" id="entrar">Entrar</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="hero">
+      <span>Não perca tempo com <s>Tomates Estragados</s>, encontre
+        <i><strong>AQUI</strong></i> os melhores filmes e suas
+        avaliações!</span>
+      <svg fill="white" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 482 482"
+        style="enable-background: new 0 0 482 482;" xml:space="preserve" class="scroll">
+        <path d="M361.9,45.5C331.9,16.1,292,0,249.4,0h-16.8C190,0,150.1,16.2,120.1,45.5c-30,29.4-46.6,68.7-46.6,110.5v170.8
+			c0,41.8,16.6,80.9,46.6,110.1C150,466,190,482,232.6,482h16.8c42.6,0,82.5-16,112.5-45.1c30.1-29.2,46.6-68.3,46.6-110.1V156
+			C408.5,114.2,392,75,361.9,45.5z M241,97.5c12.7,0,23,10.3,23,23s-10.3,23-23,23s-23-10.3-23-23C218,107.9,228.3,97.5,241,97.5z
+			 M93.5,156C93.5,81.5,155,20.9,231,20v58.7c-18.9,4.5-33,21.5-33,41.8s14.1,37.3,33,41.8v47.2H93.5V156z M388.5,326.8
+			c0,74.5-62.4,135.2-139.1,135.2h-16.8c-76.7,0-139.1-60.7-139.1-135.2v-97.3h295V326.8z M388.5,209.5H251v-47.2
+			c18.9-4.5,33-21.5,33-41.8s-14.1-37.3-33-41.8V20c76,0.8,137.5,61.5,137.5,136V209.5z" />
+      </svg>
+    </div>
+  </header>
+
+  <aside>
+    <div class="sticky">
+      <h2>Hot Links</h2>
+      <nav>
+        <ul>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#maisAssistidos">Mais assistidos</a></li>
+          <li><a href="#melhoresAvaliados">Melhores avaliados</a></li>
+          <li><a href="#maisPremiados">Mais premiados</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <main>
+    <section id="categorias">
+      <div class="container">
+        <h2>Categorias</h2>
+        <div>
+          <span><a href="categories/acao-e-aventura.html">Ação e aventura</a></span>
+          <span><a href="categories/comedy.html">Comédias</a></span>
+          <span><a href="categories/suspense.html">Suspense</a></span>
+          <span><a href="categories/terror.html">Terror</a></span>
+          <span><a href="categories/police.html">Policiais</a></span>
+          <span><a href="categories/romance.html">Românticos</a></span>
+          <span><a href="categories/family.html">Para toda a família</a></span>
+          <span><a href="categories/heroes.html">Super-heróis</a></span>
+          <span><a href="categories/nationals.html">Nacionais</a></span>
+          <span><a href="categories/fantasy.html">Fantasia</a></span>
+          <span><a href="categories/kids.html">Infantil</a></span>
+          <span><a href="categories/documentaries.html">Documentarios</a></span>
+          <span><a href="categories/science-fiction.html">Ficção científica</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="maisAssistidos">
+      <div class="container">
+        <h2>Mais Assistidos</h2>
+
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.JenVy7b7mvVqSq5IGK9oRwAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>A Freira</b></h4>
+                <p>
+                  Presa em um convento na Romênia, uma freira comete suicídio. Para investigar o caso, o Vaticano envia
+                  um padre atormentado e uma noviça prestes a se tornar freira. Arriscando suas vidas, a fé e até suas
+                  almas, os dois descobrem um segredo profano e se
+                  confrontam com uma força do mal que toma a forma de uma freira demoníaca e transforma o convento num
+                  campo de batalha.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.NBxTibgH9s3zh-orhNYmQAAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Clube da Luta</b></h4>
+                <p>
+                  Um explosivo sofredor de insônia (Edward Norton) e um carismático vendedor de sabonete (Brad Pitt)
+                  canalizam agressão primitiva masculina transformando-a em uma nova e chocante forma de terapia. Seu
+                  conceito pega, e formam-se diversos clubes da luta clandestinos
+                  em cada cidade, até que uma mulher sensual e excêntrica (Helena Bonham Carter) entra na jogada e
+                  desencadeia uma situação fora de controle rumo ao caos. O New York Times declarou que O CLUBE DA LUTA
+                  talvez precise ser
+                  assistido mais de uma vez. Aqui está sua chance. Prepare-se para o impacto.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img src="https://www.filmesonlinegratis.com/wp-content/uploads/2020/07/516486-214x300.jpg"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Greyhound: Na Mira do Inimigo</b></h4>
+                <p>
+                  No início da Segunda Guerra Mundial, um inexperiente capitão da Marinha dos EUA deve liderar um
+                  comboio aliado sendo perseguido por barcos e submarinos nazistas.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.auBozAH0ivokcfoJgtju-AAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>O Contador</b></h4>
+                <p>
+                  Christian Wolff (Affleck) é um portador da Síndrome de Savant com mais afinidade por números do que
+                  por pessoas. Tendo um escritório de contabilidade em uma cidadezinha como fachada, ele trabalha como
+                  contador autônomo para algumas das mais perigosas
+                  organizações criminosas do mundo. Com o Departamento Criminal do Ministério da Fazenda, coordenado por
+                  Ray King (J.K. Simmons), começando a fechar o cerco, Christian aceita um cliente legítimo: uma empresa
+                  de robótica
+                  de última geração onde uma assistente de contabilidade (Anna Kendrick) descobre uma discrepância
+                  envolvendo milhões de dólares. Porém, conforme Christian desvenda os registros e se aproxima da
+                  verdade, a contagem de
+                  corpos começa a subir.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.9iEmG_bxeoL1aBXPh8j9IgAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Batman vs Superman : A Origem da Justiça</b></h4>
+                <p>
+                  O confronto entre Superman (Henry Cavill) e Zod (Michael Shannon) em Metrópolis fez com que a
+                  população mundial se dividisse acerca da existência de extra-terrestres na Terra. Enquanto muitos
+                  consideram o Superman como um novo deus, há aqueles que consideram
+                  extremamente perigoso que haja um ser tão poderoso sem qualquer tipo de controle. Bruce Wayne (Ben
+                  Affleck) é um dos que acreditam nesta segunda hipótese. Sob o manto de um Batman violento e obcecado,
+                  ele investiga
+                  o laboratório de Lex Luthor (Jesse Eisenberg), que descobriu uma pedra verde que consegue eliminar e
+                  enfraquecer os filhos de Krypton.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="melhoresAvaliados">
+      <div class="container">
+        <h2>Melhores Avaliados</h2>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Q5ygO_XP0KpgTcoiIpNZ-gDREq%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>A Cabana</b></h4>
+                <p>
+                  Um homem vive atormentado após perder a sua filha mais nova, cujo corpo nunca foi encontrado, mas
+                  sinais de que ela teria sido violentada e assassinada são encontrados em uma cabana nas montanhas.
+                  Anos depois da tragédia, ele recebe um chamado misterioso
+                  para retornar a esse local, onde ele vai receber uma lição de vida.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.m5bkOW49JJljmyJwDk_bTQHaK-%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Animais Fantásticos e Onde Habitam</b></h4>
+                <p>
+                  O excêntrico magizoologista Newt Scamander (Eddie Redmayne) chega à cidade de Nova York levando com
+                  muito zelo sua preciosa maleta, um objeto mágico onde ele carrega fantásticos animais do mundo da
+                  magia que coletou durante as suas viagens. Em meio a
+                  comunidade bruxa norte-america, que teme muito mais a exposição aos trouxas do que os ingleses, Newt
+                  precisará usar todas suas habilidades e conhecimentos para capturar uma variedade de criaturas que
+                  acabam fugindo.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.r-71XNkr5PwB3lWWzkKiTwAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Minha Mãe é Uma Peça 2: O Filme</b></h4>
+                <p>
+                  A mãe mais divertida do Brasil tornou-se apresentadora de TV, ficou famosa, mudou de endereço, de
+                  status econômico… Mudou quase tudo, só não mudou a si mesma. Dona Hermínia (Paulo Gustavo) continua
+                  hilária, irreverente e muito preocupada com os problemas
+                  da família: Marcelina (Mariana Xavier) decide ser atriz e Juliano (Rodrigo Pandolfo) se descobre
+                  bissexual. Para compeltar, a irmã Lucia Helena (Patricia Travassos), que mora há anos em Nova York,
+                  resolve fazer uma
+                  longa visita.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pZu5q4OHtXIE03LPzHSyEgAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Logan</b></h4>
+                <p>
+                  Em 2029, Logan (Hugh Jackman) ganha a vida como chofer de limousine para cuidar do nonagenário Charles
+                  Xavier (Patrick Stewart). Debilitado fisicamente e esgotado emocionalmente, ele é procurado por
+                  Gabriela (Elizabeth Rodriguez), uma mexicana que precisa
+                  da ajuda do ex-X-Men para defender a pequena Laura Kinney / X-23 (Dafne Keen). Ao mesmo tempo em que
+                  se recusa a voltar à ativa, Logan é perseguido pelo mercenário Donald Pierce (Boyd Holbrook),
+                  interessado na menina.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.explicit.bing.net%2Fth%3Fid%3DOIP.FGjiKUkq_02OjpF2DWytDgHaKd%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Velozes & Furiosos 8</b></h4>
+                <p>
+                  Brian (Paul Walker) e Mia (Jordana Brewster) se aposentaram, o resto da equipe foi exonerado, Dom (Vin
+                  Diesel) e Letty (Michelle Rodriguez) estão em lua de mel e levam uma vida pacata e completamente
+                  normal. Só que o passado volta a atormentá-los quando
+                  uma mulher misteriosa (Charlize Theron) faz com que Dom retorne ao mundo do crime e da velocidade.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="maisPremiados">
+      <div class="container">
+        <h2>Mais Premiados</h2>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.iOOx7ArH4xrbunSe1D7WbwAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>A Chegada</b></h4>
+                <p>
+                  Uma linguista encarregada de encontrar uma forma de se comunicar com aliens que chegaram à Terra
+                  descobre uma conexão que pode mudar sua vida e a do mundo.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oEsBy1CHD6A0X5IEjOEkHgAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Lion: Uma Jornada Para Casa</b></h4>
+                <p>
+                  Um garoto se perde e é adotado por um casal australiano. Anos depois, ele continua decidido a rever
+                  sua família.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.EJG_fmGGhbVuz_iOQEZdCQAAAA%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>A Teoria de Tudo</b></h4>
+                <p>
+                  Esta cinebiografia do astrofísico Stephen Hawking retrata a importância de seu trabalho, a luta contra
+                  uma doença incurável e o amor incondicional de sua esposa.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.IbsIaJ_n1adZ6U9duKpkQgHaKV%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>Quem Quer Ser Um Milionário?</b></h4>
+                <p>
+                  Resta uma pergunta para Jamal ganhar o grande prêmio de um concurso na TV, mas ele é preso e acusado
+                  de ter trapaceado.
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide card">
+              <div class="overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-star star" style="margin: 20px;">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-message-square comment" style="margin: 20px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="description.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-eye see-more" style="margin: 20px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </a>
+              </div>
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oX6ZVx9ZhU2GkhvKAqrW-AHaK4%26pid%3DApi&f=1"
+                style="width: 100%;" />
+              <div class="card-content">
+                <h4><b>O Regresso</b></h4>
+                <p>
+                  Nos anos 1820, um caçador de peles luta pela sobrevivência para se vingar de um mercenário cruel que o
+                  deixou à beira da morte próximo ao rio Missouri.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Desenvolvido por Andre Dias - RA: 171253094
+  </footer>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

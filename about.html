@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Sobre o Rotten Potatos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+  <div class="mask hide"></div>
+  <div class="modal hide" id="modalLogin">
+    <div class="modal-header">
+      <h2>:: Login</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-x close-button" id="closeModalLoginButton">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div>
+      <form action="" method="post">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required />
+        <input type="submit" value="Adicionar Comentario" />
+      </form>
+    </div>
+  </div>
+
+  <header>
+    <div class="navbar">
+      <h1>Rotten Potatos</h1>
+      <a class="sm-only ham-menu">
+        <span>menu &nbsp;</span>
+        <svg viewBox="0 0 100 80" width="30" height="30">
+          <rect width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="30" width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="60" width="100" height="20" rx="8" fill="white"></rect>
+        </svg>
+      </a>
+      <nav id="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><button class="custom-button" id="entrar">Entrar</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <aside>
+    <div class="sticky">
+      <h2>Hot Links</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html#categorias">Categorias</a></li>
+          <li><a href="index.html#maisAssistidos">Mais assistidos</a></li>
+          <li><a href="index.html#melhoresAvaliados">Melhores avaliados</a></li>
+          <li><a href="index.html#maisPremiados">Mais premiados</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col col-12">
+            <h2>Sobre</h2>
+            <p>Este site é uma paródia do conhecido <b><i><a href="https://www.rottentomatoes.com/"
+                    target="blank">Rotten
+                    Tomatos</a></i></b></p>
+            <p>Trabalho para a disciplina de Desenvolvimento Web, e foi desenvolvido pelo aluno André Henrique Gonçales
+              Dias, RA: 171253094 .</p>
+            <p>As principais linguagens utilizadas utilizadas foram HTML5, CSS3, Javascript. Utilizamos o slider da
+              biblioteca Swiper.js por ser
+              open source e amplamente utilizado por grandes empresa nos mais diversos tipos de websites, sem contar do
+              suporte a navegação mobile que ele oferece.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Desenvolvido por Andre Dias - RA: 171253094
+  </footer>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

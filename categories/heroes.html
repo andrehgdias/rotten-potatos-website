@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Super-heróis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="mask hide"></div>
+  <div class="modal hide" id="modalLogin">
+    <div class="modal-header">
+      <h2>:: Login</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-x close-button" id="closeModalLoginButton">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div>
+      <form action="" method="post">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required />
+        <input type="submit" value="Adicionar Comentario" />
+      </form>
+    </div>
+  </div>
+  <div class="modal hide" id="modalComments">
+    <div class="modal-header">
+      <h2>:: Comentários</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-x close-button" id="closeModalCommentsButton">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div>
+      <form action="" method="post">
+        <label for="userComment">Meu comentario</label>
+        <textarea id="userComment" name="userComment" placeholder="Escreva aqui sua opiniao sobre o filme!" rows="4"
+          required></textarea>
+        <input type="submit" value="Adicionar Comentario" />
+      </form>
+    </div>
+  </div>
+  <header>
+    <div class="navbar">
+      <h1>Rotten Potatos</h1>
+      <a class="sm-only ham-menu">
+        <span>menu &nbsp;</span>
+        <svg viewBox="0 0 100 80" width="30" height="30">
+          <rect width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="30" width="100" height="20" rx="8" fill="white"></rect>
+          <rect y="60" width="100" height="20" rx="8" fill="white"></rect>
+        </svg>
+      </a>
+      <nav id="navbar">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">Sobre</a></li>
+          <li><button class="custom-button" id="entrar">Entrar</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="hero">
+      <span>Super-heróis</span>
+      <svg fill="white" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 482 482"
+        style="enable-background: new 0 0 482 482;" xml:space="preserve" class="scroll">
+        <path d="M361.9,45.5C331.9,16.1,292,0,249.4,0h-16.8C190,0,150.1,16.2,120.1,45.5c-30,29.4-46.6,68.7-46.6,110.5v170.8
+			c0,41.8,16.6,80.9,46.6,110.1C150,466,190,482,232.6,482h16.8c42.6,0,82.5-16,112.5-45.1c30.1-29.2,46.6-68.3,46.6-110.1V156
+			C408.5,114.2,392,75,361.9,45.5z M241,97.5c12.7,0,23,10.3,23,23s-10.3,23-23,23s-23-10.3-23-23C218,107.9,228.3,97.5,241,97.5z
+			 M93.5,156C93.5,81.5,155,20.9,231,20v58.7c-18.9,4.5-33,21.5-33,41.8s14.1,37.3,33,41.8v47.2H93.5V156z M388.5,326.8
+			c0,74.5-62.4,135.2-139.1,135.2h-16.8c-76.7,0-139.1-60.7-139.1-135.2v-97.3h295V326.8z M388.5,209.5H251v-47.2
+			c18.9-4.5,33-21.5,33-41.8s-14.1-37.3-33-41.8V20c76,0.8,137.5,61.5,137.5,136V209.5z" />
+      </svg>
+    </div>
+  </header>
+
+  <aside>
+    <div class="sticky">
+      <h2>Hot Links</h2>
+      <nav>
+        <ul>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="../index.html#maisAssistidos">Mais assistidos</a></li>
+          <li><a href="../index.html#melhoresAvaliados">Melhores avaliados</a></li>
+          <li><a href="../index.html#maisPremiados">Mais premiados</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <main>
+    <section id="categorias">
+      <div class="container">
+        <h2>Categorias</h2>
+        <div>
+          <span><a href="acao-e-aventura.html">Ação e aventura</a></span>
+          <span><a href="comedy.html">Comédias</a></span>
+          <span><a href="suspense.html">Suspense</a></span>
+          <span><a href="terror.html">Terror</a></span>
+          <span><a href="police.html">Policiais</a></span>
+          <span><a href="romance.html">Românticos</a></span>
+          <span><a href="family.html">Para toda a família</a></span>
+          <span><a href="heroes.html">Super-heróis</a></span>
+          <span><a href="nationals.html">Nacionais</a></span>
+          <span><a href="fantasy.html">Fantasia</a></span>
+          <span><a href="kids.html">Infantil</a></span>
+          <span><a href="documentaries.html">Documentarios</a></span>
+          <span><a href="science-fiction.html">Ficção científica</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col col-12">
+            <h2>Filmes</h2>
+
+            <div class="area-card">
+              <div class="card cursor-normal">
+                <div class="overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-star star" style="margin: 20px;">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                    <path
+                      d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                    </path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-message-square comment" style="margin: 20px;">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <a href="../description.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-eye see-more" style="margin: 20px;">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </a>
+                </div>
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oX6ZVx9ZhU2GkhvKAqrW-AHaK4%26pid%3DApi&f=1"
+                  style="width: 100%;" />
+                <div class="card-content">
+                  <h4><b>O Regresso</b></h4>
+                  <p>
+                    Nos anos 1820, um caçador de peles luta pela sobrevivência para se vingar de um mercenário cruel que
+                    o
+                    deixou à beira da morte próximo ao rio Missouri.
+                  </p>
+                </div>
+              </div>
+              <div class="card cursor-normal">
+                <div class="overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-star star" style="margin: 20px;">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                    <path
+                      d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                    </path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-message-square comment" style="margin: 20px;">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <a href="../description.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-eye see-more" style="margin: 20px;">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </a>
+                </div>
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oX6ZVx9ZhU2GkhvKAqrW-AHaK4%26pid%3DApi&f=1"
+                  style="width: 100%;" />
+                <div class="card-content">
+                  <h4><b>O Regresso</b></h4>
+                  <p>
+                    Nos anos 1820, um caçador de peles luta pela sobrevivência para se vingar de um mercenário cruel que
+                    o
+                    deixou à beira da morte próximo ao rio Missouri.
+                  </p>
+                </div>
+              </div>
+              <div class="card cursor-normal">
+                <div class="overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-star star" style="margin: 20px;">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                    <path
+                      d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                    </path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-message-square comment" style="margin: 20px;">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <a href="../description.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-eye see-more" style="margin: 20px;">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </a>
+                </div>
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oX6ZVx9ZhU2GkhvKAqrW-AHaK4%26pid%3DApi&f=1"
+                  style="width: 100%;" />
+                <div class="card-content">
+                  <h4><b>O Regresso</b></h4>
+                  <p>
+                    Nos anos 1820, um caçador de peles luta pela sobrevivência para se vingar de um mercenário cruel que
+                    o
+                    deixou à beira da morte próximo ao rio Missouri.
+                  </p>
+                </div>
+              </div>
+              <div class="card cursor-normal">
+                <div class="overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-star star" style="margin: 20px;">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-thumbs-up thumbs" style="margin: 20px;">
+                    <path
+                      d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                    </path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-message-square comment" style="margin: 20px;">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <a href="../description.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-eye see-more" style="margin: 20px;">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </a>
+                </div>
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oX6ZVx9ZhU2GkhvKAqrW-AHaK4%26pid%3DApi&f=1"
+                  style="width: 100%;" />
+                <div class="card-content">
+                  <h4><b>O Regresso</b></h4>
+                  <p>
+                    Nos anos 1820, um caçador de peles luta pela sobrevivência para se vingar de um mercenário cruel que
+                    o
+                    deixou à beira da morte próximo ao rio Missouri.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    Desenvolvido por Andre Dias - RA: 171253094
+  </footer>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="../main.js"></script>
+</body>
+
+</html>
