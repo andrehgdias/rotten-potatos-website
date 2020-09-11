@@ -1,0 +1,8 @@
+main {
+    min-height: calc(100vh - 112px);
+}
+
+div p {
+    line-height: 1.7rem;
+    font-size: 14pt;
+}
