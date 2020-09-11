@@ -51,12 +51,16 @@ window.addEventListener("load", async function () {
 				toggleModal("modalSignup");
 			});
 
-		document
-			.getElementById("closeModalCommentsButton")
-			.addEventListener("click", () => {
-				animModal("modalComments", "close");
-				toggleModal("modalComments");
-			});
+		let buttonModalComments = document.getElementById(
+			"closeModalCommentsButton"
+		);
+		if (buttonModalComments)
+			document
+				.getElementById("closeModalCommentsButton")
+				.addEventListener("click", () => {
+					animModal("modalComments", "close");
+					toggleModal("modalComments");
+				});
 	}
 
 	document
