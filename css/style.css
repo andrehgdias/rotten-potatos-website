@@ -49,6 +49,10 @@ section {
     padding-bottom: 40px;
 }
 
+textarea {
+    resize: none;
+}
+
 .disabled {
     opacity: .5;
     cursor: not-allowed !important;
