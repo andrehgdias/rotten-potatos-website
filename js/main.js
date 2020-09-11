@@ -56,19 +56,53 @@ window.addEventListener("load", async function () {
 
 	let stars = document.getElementsByClassName("star");
 	for (var i = 0; i < stars.length; i++) {
-		stars[i].addEventListener("click", favorite);
+		stars[i].addEventListener("click", () => {
+			if (window.localStorage.getItem("user")) {
+				stars[i].addEventListener("click", favorite);
+			} else {
+				Swal.fire({
+					toast: true,
+					position: "top",
+					title: "Você não está logado!",
+					text: "Faça login para poder favoritar um filme!",
+					type: "info",
+				});
+			}
+		});
 	}
 
 	let thumbs = document.getElementsByClassName("thumbs");
 	for (var i = 0; i < thumbs.length; i++) {
-		thumbs[i].addEventListener("click", like);
+		thumbs[i].addEventListener("click", () => {
+			if (window.localStorage.getItem("user")) {
+				thumbs[i].addEventListener("click", like);
+			} else {
+				Swal.fire({
+					toast: true,
+					position: "top",
+					title: "Você não está logado!",
+					text: "Faça login para poder dar like em um filme!",
+					type: "info",
+				});
+			}
+		});
 	}
 
 	let comments = document.getElementsByClassName("comment");
 	for (var i = 0; i < comments.length; i++) {
 		comments[i].addEventListener("click", () => {
-			animModal("modalComments", "open");
-			toggleModal("modalComments");
+			if (window.localStorage.getItem("user")) {
+				animModal("modalComments", "open");
+				toggleModal("modalComments");
+			} else {
+				Swal.fire({
+					toast: true,
+					position: "top",
+					title: "Você não está logado!",
+					text: "Faça login para poder adicionar um comentário!",
+					type: "info",
+				});
+			}
 		});
 	}
 
@@ -86,6 +120,6 @@ window.addEventListener("load", async function () {
 });
 
 function sleep(ms) {
-	console.info("Sleep: ", ms );
+	console.info("Sleep: ", ms);
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }

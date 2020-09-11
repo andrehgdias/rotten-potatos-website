@@ -14,18 +14,16 @@ window.addEventListener("load", async function () {
 			await sleep(1500);
 			history.go(0);
 		});
-		document
-			.getElementById("closeModalCommentsButton")
-			.addEventListener("click", () => {
-				Swal.fire({
-					toast: true,
-					position: "top",
-					showConfirmButton: false,
-					title: "Você não está logado!",
-					text: "Faça login para poder adicionar um comentário!",
-					type: "info",
+		let buttonModalComments = document.getElementById(
+			"closeModalCommentsButton"
+		);
+		if (buttonModalComments)
+			document
+				.getElementById("closeModalCommentsButton")
+				.addEventListener("click", () => {
+					animModal("modalComments", "close");
+					toggleModal("modalComments");
 				});
-			});
 	} else {
 		document.getElementById("entrar").addEventListener("click", () => {
 			animModal("modalLogin", "open");
@@ -50,17 +48,6 @@ window.addEventListener("load", async function () {
 				animModal("modalSignup", "close");
 				toggleModal("modalSignup");
 			});
-
-		let buttonModalComments = document.getElementById(
-			"closeModalCommentsButton"
-		);
-		if (buttonModalComments)
-			document
-				.getElementById("closeModalCommentsButton")
-				.addEventListener("click", () => {
-					animModal("modalComments", "close");
-					toggleModal("modalComments");
-				});
 	}
 
 	document
