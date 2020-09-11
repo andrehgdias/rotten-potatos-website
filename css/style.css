@@ -49,6 +49,11 @@ section {
     padding-bottom: 40px;
 }
 
+.disabled {
+    opacity: .5;
+    cursor: not-allowed !important;
+}
+
 .star, .thumbs {
     stroke: white;
     fill: transparent;
