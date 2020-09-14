@@ -298,9 +298,20 @@ nav a:hover {
     transition: transform .3s, box-shadow .3s;
 }
 
-.custom-button:hover {
+.custom-button:hover, .button-outlined:hover {
     box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.8);
     transform: translate(-4px, -4px);
+}
+
+.button-outlined {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #202020;
+    padding: 10px 20px;
+    margin: auto 5px;
+    border-radius: 4px;
+    font-size: 15pt;
+    transition: transform .3s, box-shadow .3s;
 }
 
 .container {

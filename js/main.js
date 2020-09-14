@@ -20,12 +20,18 @@ window.addEventListener("load", async function () {
 	};
 
 	favorite = (e) => {
+		console.log("Filme id: ", e.target.dataset.filmeid);
 		e.target.classList.toggle("star-selected");
 	};
 
 	like = (e) => {
+		console.log("Filme id: ", e.target.dataset.filmeid);
 		e.target.classList.toggle("thumbs-selected");
 	};
+
+	openDescription = (e) => {
+		document.getElementById("film"+e.target.dataset.filmeid).submit();
+	}
 
 	var mySwiper = new Swiper(".swiper-container", {
 		pagination: {
@@ -54,12 +60,37 @@ window.addEventListener("load", async function () {
 		.getElementsByClassName("sm-only")[0]
 		.addEventListener("click", toggleSidebar);
 
+	// Checking id api is online
+	try {
+		let response = await fetch(
+			"https://rotten-potatos-api.herokuapp.com/ping"
+		);
+		let data = await response.text();
+		console.info(data);
+		init();
+	} catch (error) {
+		console.warn(error);
+		console.warn("HTTP-Error: " + response.status);
+	}
+});
+
+function init() {
 	let stars = document.getElementsByClassName("star");
-	for (var i = 0; i < stars.length; i++) {
-		stars[i].addEventListener("click", () => {
-			if (window.localStorage.getItem("user")) {
-				stars[i].addEventListener("click", favorite);
-			} else {
+	let thumbs = document.getElementsByClassName("thumbs");
+	let details = document.getElementsByClassName("see-more");
+
+	for (let i = 0; i < details.length; i++) {
+		details[i].addEventListener("click", openDescription);
+	}
+
+	if (window.localStorage.getItem("user")) {
+		for (var i = 0; i < thumbs.length; i++) {
+			thumbs[i].addEventListener("click", like);
+			stars[i].addEventListener("click", favorite);
+		}
+	} else {
+		for (var i = 0; i < thumbs.length; i++) {
+			stars[i].addEventListener("click", () => {
 				Swal.fire({
 					toast: true,
 					position: "top",
@@ -67,16 +98,8 @@ window.addEventListener("load", async function () {
 					text: "Faça login para poder favoritar um filme!",
 					type: "info",
 				});
-			}
-		});
-	}
-
-	let thumbs = document.getElementsByClassName("thumbs");
-	for (var i = 0; i < thumbs.length; i++) {
-		thumbs[i].addEventListener("click", () => {
-			if (window.localStorage.getItem("user")) {
-				thumbs[i].addEventListener("click", like);
-			} else {
+			});
+			thumbs[i].addEventListener("click", () => {
 				Swal.fire({
 					toast: true,
 					position: "top",
@@ -84,8 +107,8 @@ window.addEventListener("load", async function () {
 					text: "Faça login para poder dar like em um filme!",
 					type: "info",
 				});
-			}
-		});
+			});
+		}
 	}
 
 	let comments = document.getElementsByClassName("comment");
@@ -105,19 +128,7 @@ window.addEventListener("load", async function () {
 			}
 		});
 	}
-
-	// Checking id api is online
-	try {
-		let response = await fetch(
-			"https://rotten-potatos-api.herokuapp.com/ping"
-		);
-		let data = await response.text();
-		console.info(data);
-	} catch (error) {
-		console.warn(error);
-		console.warn("HTTP-Error: " + response.status);
-	}
-});
+}
 
 function sleep(ms) {
 	console.info("Sleep: ", ms);
