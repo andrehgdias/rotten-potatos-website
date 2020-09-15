@@ -3,14 +3,12 @@ window.addEventListener("load", async function () {
 		document.getElementById("sair").addEventListener("click", async () => {
 			console.log("Log out...");
 			window.localStorage.removeItem("user");
-			Swal.fire({
-				toast: true,
-				position: "top",
-				showConfirmButton: false,
-				title: "Sucesso",
-				text: `LOGOUT realizado com sucesso, você será redirecionado automaticamente!`,
-				type: "success",
-			});
+			Toast.show(
+				"Sucesso!",
+				"LOGOUT realizado com sucesso, você será redirecionado automaticamente!",
+				"success",
+				false
+			);
 			await sleep(1500);
 			history.go(0);
 		});
@@ -79,28 +77,23 @@ window.addEventListener("load", async function () {
 
 				let json = await response.json();
 				window.localStorage.setItem("user", JSON.stringify(json));
-				Swal.fire({
-					toast: true,
-					position: "top",
-					showConfirmButton: false,
-					title: "Sucesso",
-					text: `LOGIN realizado com sucesso, você será redirecionado automaticamente!`,
-					type: "success",
-				});
+				Toast.show(
+					"Sucesso!",
+					"LOGIN realizado com sucesso, você será redirecionado automaticamente!",
+					"success",
+					false
+				);
 				await sleep(1500);
 				animModal("modalLogin", "close");
 				toggleModal("modalLogin");
 				history.go(0);
 			} catch (error) {
-				Swal.fire({
-					toast: true,
-					position: "top",
-					showConfirmButton: false,
-					title: "Erro durante o login!",
-					text:
-						"Houve algum problema com seu login, verifique suas informações e tente novamente!",
-					type: "error",
-				});
+				Toast.show(
+					"Erro durante o login!",
+					"Houve algum problema com seu login, verifique suas informações e tente novamente!",
+					"error",
+					false
+				);
 				console.warn(error);
 			}
 		});
@@ -135,26 +128,21 @@ window.addEventListener("load", async function () {
 				let text = await response.text();
 
 				if (text == "Salvo") {
-					Swal.fire({
-						toast: true,
-						position: "top",
-						showConfirmButton: false,
-						title: "Sucesso",
-						text: `Cadastro realizado com sucesso, faça seu login!`,
-						type: "success",
-					});
+					Toast.show(
+						"Sucesso!",
+						"Cadastro realizado com sucesso, faça seu login!",
+						"success",
+						false
+					);
 					animModal("modalSignup", "close");
 					toggleModal("modalSignup");
 				} else {
-					Swal.fire({
-						toast: true,
-						position: "top",
-						showConfirmButton: false,
-						title: "Erro durante o cadastro!",
-						text:
-							"Houve algum problema com seu cadastro, verifique suas informações e tente novamente!",
-						type: "error",
-					});
+					Toast.show(
+						"Erro durante o cadastro!",
+						"Houve algum problema com seu cadastro, verifique suas informações e tente novamente!",
+						"error",
+						false
+					);
 				}
 			} catch (error) {
 				console.warn(error);

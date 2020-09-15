@@ -4,12 +4,10 @@ window.addEventListener("load", async function () {
 			"https://rotten-potatos-api.herokuapp.com/filmes"
 		);
 		let data = await response.json();
-		console.info(data);
 		generateCards(data);
 		init();
 	} catch (error) {
 		console.warn(error);
-		console.warn("HTTP-Error: " + response.status);
 	}
 
 	function generateCards(data) {
@@ -17,7 +15,6 @@ window.addEventListener("load", async function () {
 		let allCards = "";
 
 		for (const filme of data) {
-			console.log(filme);
 			let cardHtml = `
             <div class="card cursor-normal">
                 <div class="overlay">
